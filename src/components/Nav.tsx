@@ -13,7 +13,7 @@ export default function Nav() {
         </div>
         <div className="nav__r">
           <a href="#" className="nav__signin">Sign in</a>
-          <button className="btn btn--primary btn--sm">Explore the Kits</button>
+          <a href="#kits" className="btn btn--primary btn--sm">Explore the Kits</a>
         </div>
       </div>
     </nav>
