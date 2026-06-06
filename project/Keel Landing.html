@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Keel — Launch the alternative</title>
+<link rel="stylesheet" href="styles/colors_and_type.css">
+<link rel="stylesheet" href="styles/keel.css">
+<link rel="stylesheet" href="styles/landing.css">
+</head>
+<body class="keel">
+
+  <!-- ====================== NAV ====================== -->
+  <nav class="nav">
+    <div class="nav__in">
+      <a class="brand" href="#top"><img src="assets/keel-mark.svg" alt="">Keel</a>
+      <div class="nav__links">
+        <a href="#anatomy">What ships</a>
+        <a href="#proof">Proof</a>
+        <a href="#how">How it works</a>
+        <a href="#objections">Before you decide</a>
+      </div>
+      <div class="nav__r">
+        <a href="#" class="nav__signin">Sign in</a>
+        <button class="btn btn--primary btn--sm">Explore the Kits</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ====================== HERO ====================== -->
+  <header class="hero" id="top" data-screen-label="Hero">
+    <div class="wrap hero__in">
+      <div class="hero__copy">
+        <div class="eyebrow hero__eyebrow">AI-native software companies</div>
+        <h1 class="hero__headline">You know where the incumbent is weak. Now you can launch the alternative.</h1>
+        <p class="hero__sub">A complete, AI-native software company — product, brand, billing, support, and infrastructure — already built and audited. You bring the market. We've built everything else.</p>
+        <div class="hero__cta">
+          <button class="btn btn--primary btn--lg">Explore the Kits <i data-lucide="arrow-right"></i></button>
+          <a href="#proof" class="btn btn--ghost btn--lg"><i data-lucide="play"></i> Watch one run</a>
+        </div>
+        <p class="hero__micro mono">What used to take a funded team a year. Yours to configure and launch.</p>
+      </div>
+
+      <!-- Looping sandbox tease — quiet glimpse, full run lives in Proof -->
+      <aside class="tease" aria-label="A glimpse of an agent working — full run below">
+        <div class="tease__bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="tease__t mono">retention agent · live</span>
+          <span class="tease__live"><span class="tease__live-dot"></span>watching</span>
+        </div>
+        <div class="tease__body">
+          <div class="tease__stat">
+            <span class="tease__num data" id="teaseNum">318</span>
+            <span class="tease__num-lbl mono">accounts watched, continuously</span>
+          </div>
+          <ul class="tease__feed" id="teaseFeed" aria-hidden="true">
+            <li><span class="tease__tick"></span>Scanning usage, tickets, logins</li>
+            <li><span class="tease__tick"></span>Signal — account #2208 cooling</li>
+            <li><span class="tease__tick"></span>Assembling context: who, why, history</li>
+            <li><span class="tease__tick"></span>Drafting tailored re-engagement</li>
+            <li><span class="tease__tick tease__tick--esc"></span>Edge case — handing to the owner</li>
+          </ul>
+          <a href="#proof" class="tease__more mono">Watch the full run <i data-lucide="arrow-down"></i></a>
+        </div>
+      </aside>
+    </div>
+    <hr class="waterline hero__water">
+  </header>
+
+  <!-- ====================== ANATOMY ====================== -->
+  <section class="anatomy" id="anatomy" data-screen-label="Anatomy — what ships">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">A product isn't a company</div>
+          <h2 class="sec-title" id="anatomyHeadline">A product floats. A company needs a keel.</h2>
+        </div>
+        <p class="sec-lede">A great product is hard to build — and it still isn't a business. A company also has to get paid, stay legal, talk to its customers, and keep running. Every Kit ships with all of it, built and audited.</p>
+      </div>
+
+      <!-- parked headline — the decision, on the canvas -->
+      <div class="hpick" role="group" aria-label="Anatomy headline is parked — pick one">
+        <span class="eyebrow hpick__lbl">Parked headline · your pick</span>
+        <div class="hpick__opts">
+          <button class="hpick__opt is-active" data-h="A product floats. A company needs a keel." aria-pressed="true">Keel metaphor</button>
+          <button class="hpick__opt" data-h="A product isn't a company." aria-pressed="false">Plain fallback</button>
+        </div>
+      </div>
+
+      <ol class="manifest" id="manifest">
+        <li class="man">
+          <span class="man__i mono">01</span>
+          <div class="man__main"><h3 class="man__title">The product</h3><p class="man__cap">The AI-native application your customers use, with onboarding and in-app help built in.</p></div>
+          <ul class="man__items"><li>AI-native web/mobile app</li><li>User onboarding</li><li>In-app help</li></ul>
+        </li>
+        <li class="man">
+          <span class="man__i mono">02</span>
+          <div class="man__main"><h3 class="man__title">A brand and a storefront</h3><p class="man__cap">Launch looking established, not empty — on day one.</p></div>
+          <ul class="man__items"><li>Logo &amp; visual identity</li><li>Conversion-built landing page</li><li>Starter blog &amp; SEO content</li></ul>
+        </li>
+        <li class="man">
+          <span class="man__i mono">03</span>
+          <div class="man__main"><h3 class="man__title">A way to get paid</h3><p class="man__cap">Charge customers and see revenue from your first sale.</p></div>
+          <ul class="man__items"><li>Subscription billing &amp; plans</li><li>Invoicing</li><li>Automatic failed-payment recovery</li><li>Revenue &amp; churn view</li></ul>
+        </li>
+        <li class="man">
+          <span class="man__i mono">04</span>
+          <div class="man__main"><h3 class="man__title">Customer communication, run by agents</h3><p class="man__cap">Reach customers and resolve issues without staffing a team.</p></div>
+          <ul class="man__items"><li>Authenticated email — won't land in spam</li><li>Support channels</li><li>AI support &amp; onboarding agents</li></ul>
+        </li>
+        <li class="man">
+          <span class="man__i mono">05</span>
+          <div class="man__main"><h3 class="man__title">The standing of a real company</h3><p class="man__cap">The legal and security footing customers and their lawyers expect.</p></div>
+          <ul class="man__items"><li>Terms &amp; privacy policy</li><li>Compliance scaffolding</li><li>Secure accounts &amp; role-based access</li><li>Audit logging</li></ul>
+        </li>
+        <li class="man">
+          <span class="man__i mono">06</span>
+          <div class="man__main"><h3 class="man__title">A cockpit to run it</h3><p class="man__cap">Know the business is healthy without watching it.</p></div>
+          <ul class="man__items"><li>Owner back-office</li><li>Product &amp; revenue analytics</li><li>Uptime &amp; error monitoring</li></ul>
+        </li>
+        <li class="man">
+          <span class="man__i mono">07</span>
+          <div class="man__main"><h3 class="man__title">Live in one click — and staying live</h3><p class="man__cap">Go from purchase to first paying customer.</p></div>
+          <ul class="man__items"><li>One-click production deploy</li><li>Production infrastructure</li><li>Launch checklist</li></ul>
+        </li>
+      </ol>
+      <p class="anatomy__foot mono">Seven parts ship with every Kit. The product is one of them — the mass is the point.</p>
+    </div>
+    <hr class="waterline">
+  </section>
+
+  <!-- ====================== AI-NATIVE ====================== -->
+  <section class="ainative" id="ai-native" data-screen-label="AI-native — built for now">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Built for now, not ported from then</div>
+          <h2 class="sec-title">Not a copy of the old software. The version that couldn't exist until now.</h2>
+        </div>
+      </div>
+
+      <!-- PILLAR ONE — PRIMARY -->
+      <div class="pillar pillar--primary">
+        <div class="pillar__head">
+          <span class="eyebrow">Pillar one · the difference</span>
+          <p class="pillar__claim">Every Kit is built the way you'd build it today, with none of the decade of legacy debt the incumbents carry. The difference isn't a longer feature list — it's that the manual busywork their architecture forces on people is simply gone.</p>
+        </div>
+        <div class="ba">
+          <div class="ba__col ba__col--before">
+            <div class="ba__lbl mono"><span class="ba__dot"></span>Before · the old architecture</div>
+            <p class="ba__text">A CS manager combs usage, tickets, and login data across dozens of accounts to guess which customers are slipping — then hand-writes each check-in.</p>
+          </div>
+          <div class="ba__arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></div>
+          <div class="ba__col ba__col--after">
+            <div class="ba__lbl mono"><span class="ba__dot ba__dot--on"></span>After · built for now</div>
+            <p class="ba__text">The system watches every account continuously, surfaces the ones actually at risk and why, and drafts the outreach. The manager just approves.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR TWO — SECONDARY -->
+      <div class="pillar pillar--secondary">
+        <div class="pillar__head">
+          <span class="eyebrow">Pillar two · and it runs itself</span>
+          <p class="pillar__claim pillar__claim--sm">Once it's live, AI agents run support and operations by default — the team you'd otherwise have to hire. So one person can operate what used to take a department.</p>
+        </div>
+        <div class="vignettes">
+          <div class="vig"><span class="vig__role mono">Support agent</span><p>Resolves a customer's question and escalates the genuine edge case to you, with the full context attached.</p></div>
+          <div class="vig"><span class="vig__role mono">Onboarding agent</span><p>Walks a new signup through setup while you sleep.</p></div>
+          <div class="vig"><span class="vig__role mono">Ops agent</span><p>Flags an anomaly before it becomes an outage.</p></div>
+        </div>
+        <div class="escnote">
+          <span class="pill pill--escalation">handoff</span>
+          <p>Agents handle the routine and hand the rest to you — with context, and nothing in the dark, because it's all logged. This isn't an autonomous-employee fantasy. It's the staff you didn't have to hire, knowing when to ask you.</p>
+        </div>
+        <p class="grace mono">And it gets more capable as AI does.</p>
+      </div>
+    </div>
+    <hr class="waterline">
+  </section>
+
+  <!-- ====================== PROOF — SHOWPIECE #1 ====================== -->
+  <section class="proof" id="proof" data-screen-label="Proof — the sandbox">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Proof / the sandbox</div>
+          <h2 class="sec-title">See it run before you spend a cent.</h2>
+        </div>
+        <p class="sec-lede">Watch the agents work, live — and see exactly what every Kit had to pass.</p>
+      </div>
+
+      <p class="proof__framing">
+        This isn't a video. Trigger it and watch a real scenario play out: an account's usage quietly drops, the agent catches the signal, pulls together the context — who, why, the history — and drafts a tailored re-engagement email. And when the situation needs a human call, it hands the account to you with a summary instead of sending. You can see it think, step by step, and you can see it know its limits.
+      </p>
+
+      <!-- The instrument panel -->
+      <div class="sandbox" id="sandbox">
+        <div class="sandbox__bar">
+          <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          <span class="sandbox__t mono">customer-success · sandbox · retention agent</span>
+          <span class="sandbox__mode mono" id="sbMode">curated scenario</span>
+        </div>
+
+        <div class="sandbox__grid">
+          <!-- left rail: scenario + run control -->
+          <div class="sandbox__rail">
+            <div class="eyebrow sb-rail__key">The scenario</div>
+            <p class="sb-rail__scenario">An account's usage quietly drops. The agent catches the signal, assembles the context, drafts the outreach — and decides whether it should send or hand the call to you.</p>
+
+            <dl class="sb-rail__meta">
+              <div><dt class="mono">Account</dt><dd class="data">Halyard Freight</dd></div>
+              <div><dt class="mono">Plan</dt><dd class="data">Growth · $199/mo</dd></div>
+              <div><dt class="mono">Signal</dt><dd class="data sb-warn">usage −38% / 14d</dd></div>
+            </dl>
+
+            <button class="btn btn--primary sb-run" id="sbRun" aria-controls="sbSteps">
+              <i data-lucide="play"></i><span class="sb-run__label">Run the scenario</span>
+            </button>
+            <p class="sb-rail__hint mono" id="sbHint">5 steps · runs in real time</p>
+          </div>
+
+          <!-- right: the reasoning trace -->
+          <div class="sandbox__trace">
+            <div class="sb-trace__head">
+              <span class="eyebrow">Reasoning trace</span>
+              <span class="sb-trace__status mono" id="sbStatus" aria-live="polite">idle</span>
+            </div>
+
+            <ol class="sb-steps" id="sbSteps" aria-live="polite">
+              <li class="sb-step" data-step="1">
+                <span class="sb-step__node"><svg class="sb-check" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="#06110f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sb-step__spin"></span></span>
+                <div class="sb-step__body">
+                  <div class="sb-step__key mono">Step 01 / Signal</div>
+                  <div class="sb-step__title">Caught a quiet drop the dashboard wouldn't flag</div>
+                  <div class="sb-step__detail">Usage down 38% over 14 days. Logins halved. No ticket filed — the kind of churn that leaves silently.</div>
+                </div>
+              </li>
+
+              <li class="sb-step" data-step="2">
+                <span class="sb-step__node"><svg class="sb-check" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="#06110f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sb-step__spin"></span></span>
+                <div class="sb-step__body">
+                  <div class="sb-step__key mono">Step 02 / Assemble context</div>
+                  <div class="sb-step__title">Pulled the who, the why, and the history</div>
+                  <div class="sb-step__detail">Champion changed roles 3 weeks ago. Two unanswered feature asks from Q1. Renewal in 41 days. Last QBR: positive.</div>
+                </div>
+              </li>
+
+              <li class="sb-step" data-step="3">
+                <span class="sb-step__node"><svg class="sb-check" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="#06110f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sb-step__spin"></span></span>
+                <div class="sb-step__body">
+                  <div class="sb-step__key mono">Step 03 / Draft outreach</div>
+                  <div class="sb-step__title">Wrote a tailored re-engagement email</div>
+                  <div class="sb-draft">
+                    <div class="sb-draft__meta mono">to: new champion · re: those two Q1 asks</div>
+                    <p class="sb-draft__line">Both requests you raised in Q1 shipped last month — I mapped them to how your team was using the older flow…</p>
+                  </div>
+                </div>
+              </li>
+
+              <li class="sb-step" data-step="4">
+                <span class="sb-step__node"><svg class="sb-check" viewBox="0 0 12 12" fill="none"><path d="M2.5 6.2 5 8.6 9.5 3.6" stroke="#06110f" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sb-step__spin"></span></span>
+                <div class="sb-step__body">
+                  <div class="sb-step__key mono">Step 04 / Check its limit</div>
+                  <div class="sb-step__title">Decided this one shouldn't be sent automatically</div>
+                  <div class="sb-step__detail">High-value account, leadership change, renewal in play. Policy: a relationship this delicate gets a human call — not an automated send.</div>
+                </div>
+              </li>
+
+              <li class="sb-step sb-step--esc" data-step="5">
+                <span class="sb-step__node sb-step__node--esc"></span>
+                <div class="sb-step__body">
+                  <div class="sb-step__key mono sb-esc-key">Step 05 / Handoff</div>
+                  <div class="sb-esc-card">
+                    <span class="pill pill--escalation">escalation</span>
+                    <div class="sb-step__title">Handed the account to you — nothing sent</div>
+                    <div class="sb-step__detail">The draft, the context, and the recommendation are attached. You make the call. The agent knew its limit, and stopped at it.</div>
+                    <div class="sb-esc-actions">
+                      <button class="btn btn--primary btn--sm">Review &amp; send</button>
+                      <button class="btn btn--ghost btn--sm">Edit the draft</button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- The audit + cost-honesty weld -->
+      <div class="proof__pair">
+        <div class="audit card">
+          <div class="audit__head">
+            <div class="eyebrow">The audit</div>
+            <span class="pill pill--success">must pass to list</span>
+          </div>
+          <h3 class="audit__name">Programmatic Trust Protocol</h3>
+          <p class="audit__body">Every Kit has to pass the same automated architecture audit before it's ever listed. The marketplace itself is the filter — this is our standard applied to everything, not a badge we award ourselves.</p>
+          <ul class="audit__dims">
+            <li><i data-lucide="shield-check"></i><div><span class="audit__dim-name">Security</span><span class="audit__dim-sub mono">auth, data, dependencies</span></div></li>
+            <li><i data-lucide="gauge"></i><div><span class="audit__dim-name">Responsiveness &amp; accessibility</span><span class="audit__dim-sub mono">WCAG AA · performance budgets</span></div></li>
+            <li><i data-lucide="activity"></i><div><span class="audit__dim-name">AI-runtime reliability &amp; latency</span><span class="audit__dim-sub mono">agent behavior under load</span></div></li>
+          </ul>
+          <a href="#" class="audit__inspect mono">The criteria are open to inspect <i data-lucide="arrow-up-right"></i></a>
+        </div>
+
+        <div class="weld card">
+          <div class="eyebrow">Why it costs a fraction — the honest answer</div>
+          <p class="weld__lede">AI makes a Kit cheap to <em>build</em>. AI alone would produce something that breaks in production. So here's the whole catch, in order:</p>
+          <ol class="weld__chain">
+            <li class="weld__link"><span class="weld__n mono">01</span><div><span class="weld__t">Cheap to build</span><span class="weld__s">AI does the heavy lifting.</span></div></li>
+            <li class="weld__link"><span class="weld__n mono">02</span><div><span class="weld__t">Made real by an expert hand</span><span class="weld__s">Built by someone who's shipped production software for 25 years.</span></div></li>
+            <li class="weld__link"><span class="weld__n mono">03</span><div><span class="weld__t">Verified before it's sold</span><span class="weld__s">Passes the audit above — or it isn't listed.</span></div></li>
+            <li class="weld__link weld__link--now"><span class="weld__n mono">04</span><div><span class="weld__t">And you can watch it behave, right now</span><span class="weld__s">No leap of faith. The run above is the evidence.</span></div></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <hr class="waterline">
+  </section>
+
+  <!-- ====================== PERSONAS ====================== -->
+  <section class="personas" id="personas" data-screen-label="Personas — you're a founder now">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">However you got here</div>
+          <h2 class="sec-title">However you got here, you're a founder now.</h2>
+        </div>
+        <p class="sec-lede">You all bring the same one thing — conviction about a market. The Kit hands you everything the founder role otherwise demands you build or hire. What differs is the head start you walk in with.</p>
+      </div>
+
+      <div class="edges">
+        <article class="edge edge--primary">
+          <div class="edge__tag mono">Primary · the insider</div>
+          <h3 class="edge__origin">Came from inside the incumbent?</h3>
+          <p class="edge__edge">Your edge is knowing exactly where it's weak — and a market that already trusts you.</p>
+        </article>
+        <article class="edge">
+          <h3 class="edge__origin">Could build it yourself?</h3>
+          <p class="edge__edge">Your edge is going straight to what makes your version different, instead of laying the same foundation a fifth time.</p>
+        </article>
+        <article class="edge">
+          <h3 class="edge__origin">Just have conviction and no team?</h3>
+          <p class="edge__edge">Your edge is starting at all — without the years, the runway, or the hires.</p>
+        </article>
+      </div>
+    </div>
+    <hr class="waterline">
+  </section>
+
+  <!-- ====================== HOW IT WORKS — SHOWPIECE #2 ====================== -->
+  <section class="how" id="how" data-screen-label="How it works — the distance">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">How it works</div>
+          <h2 class="sec-title">Pick. Configure. Launch.</h2>
+        </div>
+        <p class="sec-lede">The metaphor isn't speed — it's distance. The old way was a long way to a starting line. This is most of it, already behind you.</p>
+      </div>
+
+      <div class="dist" id="dist" data-static="true">
+        <!-- OLD WAY — the tall slog -->
+        <div class="dist__col dist__old">
+          <div class="dist__head">
+            <span class="eyebrow">The old way to launch a software company</span>
+          </div>
+          <ol class="oldway">
+            <li class="ow"><span class="ow__n mono">01</span>Hire a team</li>
+            <li class="ow"><span class="ow__n mono">02</span>Raise the money</li>
+            <li class="ow"><span class="ow__n mono">03</span>Build the product</li>
+            <li class="ow"><span class="ow__n mono">04</span>Wire up billing</li>
+            <li class="ow"><span class="ow__n mono">05</span>Write the legal docs</li>
+            <li class="ow"><span class="ow__n mono">06</span>Set up email that doesn't land in spam</li>
+            <li class="ow"><span class="ow__n mono">07</span>Build the back-office</li>
+            <li class="ow"><span class="ow__n mono">08</span>Deploy the infrastructure</li>
+            <li class="ow ow--cont"><span class="ow__n mono">09</span>…and keep going</li>
+          </ol>
+          <div class="dist__measure dist__measure--long"><span class="dist__bracket"></span><span class="dist__measure-lbl mono">≈ a year · before a single customer</span></div>
+        </div>
+
+        <!-- THE WHOLE DISTANCE — between the two -->
+        <div class="dist__gap" aria-hidden="true">
+          <span class="dist__gap-line"></span>
+          <span class="dist__gap-lbl mono">that's<br>the whole<br>distance</span>
+        </div>
+
+        <!-- KEEL WAY — three steps -->
+        <div class="dist__col dist__new">
+          <div class="dist__head">
+            <span class="eyebrow">With Keel</span>
+            <button class="btn btn--ghost btn--sm dist__replay" id="distReplay" hidden><i data-lucide="rotate-ccw"></i> Replay</button>
+          </div>
+          <ol class="steps3">
+            <li class="st3">
+              <span class="st3__node mono">1</span>
+              <div class="st3__body">
+                <h3 class="st3__label">Pick</h3>
+                <p class="st3__desc">Browse, choose your Kit, and watch it run in the sandbox.</p>
+              </div>
+            </li>
+            <li class="st3">
+              <span class="st3__node mono">2</span>
+              <div class="st3__body">
+                <h3 class="st3__label">Configure</h3>
+                <p class="st3__desc">Make it yours — name, brand, colors, copy, structure. The guided configurator does it with you, in plain conversation. No code. No developer.</p>
+                <div class="tiers">
+                  <span class="tiers__lbl mono">How far you take it</span>
+                  <ul class="tiers__list">
+                    <li><span class="tiers__name">Self-service configurator</span><span class="tiers__depth">Most people. Chat-guided, no code.</span></li>
+                    <li><span class="tiers__name">Managed service</span><span class="tiers__depth">Hands-on help for deeper customization.</span></li>
+                    <li><span class="tiers__name">Source license</span><span class="tiers__depth">Full ownership and control.</span></li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+            <li class="st3">
+              <span class="st3__node mono">3</span>
+              <div class="st3__body">
+                <h3 class="st3__label">Launch</h3>
+                <p class="st3__desc">One click to production. It goes live. The agents start working.</p>
+              </div>
+            </li>
+          </ol>
+          <div class="dist__measure dist__measure--short"><span class="dist__bracket"></span><span class="dist__measure-lbl mono">an afternoon</span></div>
+        </div>
+      </div>
+
+      <p class="how__handoff">And now you do the part only you can do — find the customers, win the market, build the thing that's yours. <strong>We compressed the setup, not the business.</strong></p>
+    </div>
+    <hr class="waterline">
+  </section>
+
+  <!-- ====================== OBJECTIONS ====================== -->
+  <section class="objections" id="objections" data-screen-label="Objections — before you decide">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">Before you decide</div>
+          <h2 class="sec-title">Before you decide.</h2>
+        </div>
+      </div>
+
+      <div class="obj__grid">
+        <!-- credibility spine -->
+        <aside class="spine">
+          <div class="eyebrow">Who's behind this</div>
+          <p class="spine__lede">The whole idea rests on one premise — that AI still needs an experienced hand to produce something real. So here's the hand.</p>
+          <ul class="spine__points">
+            <li><span class="spine__n data">25 yrs</span><p>building production software end to end — across ERP, CRM, and BPM platforms, including a Salesforce-like no-code workflow and screen builder.</p></li>
+            <li><span class="spine__n data">10 yrs</span><p>of those building the no-code generation and UI tooling this platform runs on — so "AI plus an experienced hand makes production-grade software" isn't a claim here, it's the craft.</p></li>
+            <li><span class="spine__n data">Every Kit</span><p>has to pass the audit — the proof on each one.</p></li>
+          </ul>
+        </aside>
+
+        <!-- FAQ -->
+        <div class="accordion faq" id="faq">
+          <div class="accordion__item" data-open="true">
+            <button class="accordion__head">Won't everyone get the same company I do?<span class="accordion__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="accordion__body">The Kit is the foundation, not the difference. Two restaurants can buy the same oven; the food is still theirs. Your edge was never going to come from the plumbing — it comes from your market knowledge, your positioning, your customers, your brand, and how far you take the build. The Kit hands everyone the table stakes and frees you to compete on what actually sets you apart.</div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__head">Is this just AI slop?<span class="accordion__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="accordion__body">AI on its own would produce slop — which is exactly why every Kit is built by an experienced hand and must pass an automated architecture audit before it's listed. AI makes it affordable; expertise and verification make it real.</div>
+          </div>
+          <div class="accordion__item accordion__item--gated">
+            <button class="accordion__head">Do I own it, or am I locked in?<span class="gated-pill mono">still being settled</span><span class="accordion__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="accordion__body">We're still setting the ownership and source-license terms, and we won't print a promise before it's real. When it's settled it'll be stated here in plain language — including what you can take with you. Ask us where it stands today.</div>
+          </div>
+          <div class="accordion__item accordion__item--gated">
+            <button class="accordion__head">After I buy, am I on my own?<span class="gated-pill mono">still being settled</span><span class="accordion__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="accordion__body">The post-purchase support and updates model isn't finalized yet, and we won't commit to support that doesn't exist. We'd rather leave this honest than overstate it. Ask us what's available now.</div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__head">How established are you — who else uses this?<span class="accordion__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="accordion__body">We're early, and that's the point — getting in while the window is open and the incumbents are still slow. The trust here doesn't come from logos we'd be inventing; it comes from the audit, the track record, and the Kit you can watch run for yourself before you pay.</div>
+          </div>
+          <div class="accordion__item">
+            <button class="accordion__head">Can I really run this without being technical?<span class="accordion__icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span></button>
+            <div class="accordion__body">Configuration happens in conversation, and the agents run support and operations by default. You operate the business. You don't engineer it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="waterline">
+  </section>
+
+  <!-- ====================== VISION ====================== -->
+  <section class="vision" id="vision" data-screen-label="Vision — today you pick one">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <div class="eyebrow">The horizon</div>
+          <h2 class="sec-title">Today, you pick one.</h2>
+        </div>
+      </div>
+
+      <ol class="arc">
+        <li class="arc__stage arc__stage--now">
+          <div class="arc__when mono">Today</div>
+          <div class="arc__verb">Pick</div>
+          <p class="arc__desc">Pick a complete company off the shelf and make it yours.</p>
+        </li>
+        <li class="arc__stage">
+          <div class="arc__when mono">Soon</div>
+          <div class="arc__verb">Request</div>
+          <p class="arc__desc">Request the one you have in mind — and your request shapes what gets built next.</p>
+        </li>
+        <li class="arc__stage arc__stage--far">
+          <div class="arc__when mono">Eventually</div>
+          <div class="arc__verb">Describe</div>
+          <p class="arc__desc">Describe the business you imagine, and watch the foundation come to life.</p>
+        </li>
+      </ol>
+
+      <p class="vision__moat">Each is a new door opening — not a sign that today's is a draft. And whatever the platform learns to build, your edge stays where it always was: <strong>in knowing your market.</strong></p>
+    </div>
+  </section>
+
+  <!-- ====================== FINAL CTA ====================== -->
+  <section class="final" id="final" data-screen-label="Final CTA">
+    <div class="wrap">
+      <div class="final__in">
+        <p class="final__close">The window is open, and the foundation is no longer the hard part. The rest is yours.</p>
+        <h2 class="final__cta-line">Pick your company. Make it yours.</h2>
+        <div class="final__cta">
+          <button class="btn btn--primary btn--lg">Explore the Kits <i data-lucide="arrow-right"></i></button>
+          <div class="final__secondary">
+            <button class="btn btn--ghost">Join a waitlist</button>
+            <button class="btn btn--ghost">Request a vertical</button>
+          </div>
+        </div>
+        <p class="final__pre mono">Pre-launch — the waitlist and vertical requests are how you get in early.</p>
+      </div>
+
+      <!-- thesis pull-quote card, low on the page -->
+      <a class="thesis" href="#" target="_blank" rel="noopener">
+        <span class="thesis__mark"><img src="assets/keel-mark-mono.svg" alt=""></span>
+        <blockquote class="thesis__quote">A narrow, extraordinary window — and the people bold enough to step through it.</blockquote>
+        <span class="thesis__cta mono">Read the thesis <i data-lucide="arrow-up-right"></i></span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <span class="brand foot__brand"><img src="assets/keel-mark.svg" alt="">Keel</span>
+      <span class="foot__line mono">Complete, AI-native software companies — built, audited, and yours to launch.</span>
+      <span class="foot__c mono">© 2026</span>
+    </div>
+  </footer>
+
+  <!-- ============== ANNOTATION BOARD (designer notes — not part of the live page) ============== -->
+  <aside class="annot" id="annotations" aria-label="Designer annotations — open decisions">
+    <div class="wrap">
+      <div class="annot__head">
+        <span class="eyebrow">Designer notes · not part of the live page</span>
+        <h2 class="annot__title">Two open decisions surfaced</h2>
+        <p class="annot__intro">Per the brief, these are flagged rather than silently resolved. Both live inside the page above.</p>
+      </div>
+      <div class="annot__grid">
+        <div class="annot__card">
+          <span class="annot__num mono">01</span>
+          <h3 class="annot__h">Parked Anatomy headline</h3>
+          <p>The section model marks this <code>headlineLocked: false</code>, and the copy deck offers two lines. Both are live in the <a href="#anatomy">Anatomy</a> section via the “your pick” toggle — the Keel-metaphor primary (“A product floats. A company needs a keel.”) and the plain fallback (“A product isn't a company.”). No silent choice made.</p>
+        </div>
+        <div class="annot__card">
+          <span class="annot__num mono">02</span>
+          <h3 class="annot__h">Gated FAQ answers</h3>
+          <p>Two answers depend on unmade business decisions and are rendered as honest “still being settled” entries in <a href="#objections">Before you decide</a> — never as <code>[gated]</code> placeholders or invented promises: <strong>ownership / source-license terms</strong> and <strong>post-purchase support</strong>. The commoditization answer (“won't everyone get the same company”) shows its written philosophical answer; its structural fork (limited licenses per vertical/region) is still a revenue-model decision.</p>
+        </div>
+        <div class="annot__card annot__card--note">
+          <span class="annot__num mono">·</span>
+          <h3 class="annot__h">Swappable placeholder</h3>
+          <p>The before→after and sandbox both use the <strong>Customer Success</strong> vertical as the working example from the data. It's clearly swappable once the first vertical is chosen.</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script src="landing.js"></script>
+</body>
+</html>
