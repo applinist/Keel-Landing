@@ -12,21 +12,31 @@ import FinalCta from './components/FinalCta'
 import Footer from './components/Footer'
 import AnnotationBoard from './components/AnnotationBoard'
 import KitsPage from './pages/KitsPage'
+import KitDetailPage from './pages/KitDetailPage'
 
-function getPage() {
-  return window.location.hash === '#kits' ? 'kits' : 'home'
+type Route =
+  | { page: 'home' }
+  | { page: 'kits' }
+  | { page: 'kit-detail'; slug: string }
+
+function getRoute(): Route {
+  const hash = window.location.hash.slice(1) // strip leading #
+  if (hash.startsWith('kits/')) return { page: 'kit-detail', slug: hash.slice(5) }
+  if (hash === 'kits') return { page: 'kits' }
+  return { page: 'home' }
 }
 
 export default function App() {
-  const [page, setPage] = useState(getPage)
+  const [route, setRoute] = useState<Route>(getRoute)
 
   useEffect(() => {
-    const handler = () => setPage(getPage())
+    const handler = () => setRoute(getRoute())
     window.addEventListener('hashchange', handler)
     return () => window.removeEventListener('hashchange', handler)
   }, [])
 
-  if (page === 'kits') return <KitsPage />
+  if (route.page === 'kits') return <KitsPage />
+  if (route.page === 'kit-detail') return <KitDetailPage slug={route.slug} />
 
   return (
     <div className="keel">

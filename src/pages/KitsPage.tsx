@@ -175,7 +175,11 @@ function KitCard({ kit, muted = false }: { kit: Kit; muted?: boolean }) {
   const isPrimary = kit.status === 'available'
 
   return (
-    <article className={`kit-card card card--interactive${muted ? ' kit-card--muted' : ''}`}>
+    <a
+      href={`#kits/${kit.slug}`}
+      className={`kit-card card card--interactive${muted ? ' kit-card--muted' : ''}`}
+      style={{ textDecoration: 'none' }}
+    >
       <div className="kit-card__head">
         <span className="tag">{kit.category}</span>
         <span className={`pill ${STATUS_PILL[kit.status]} kit-card__status`}>
@@ -196,13 +200,13 @@ function KitCard({ kit, muted = false }: { kit: Kit; muted?: boolean }) {
             <span className="data">{kit.waitlistCount}</span> waiting
           </span>
         )}
-        <button
+        <span
           className={`btn btn--sm kit-card__cta ${isPrimary ? 'btn--primary' : 'btn--ghost'}`}
         >
           {ctaLabel}
-        </button>
+        </span>
       </footer>
-    </article>
+    </a>
   )
 }
 
@@ -210,7 +214,11 @@ function KitCard({ kit, muted = false }: { kit: Kit; muted?: boolean }) {
 
 function FeaturedKitCard({ kit }: { kit: Kit }) {
   return (
-    <article className="kit-card kit-card--featured card card--interactive">
+    <a
+      href={`#kits/${kit.slug}`}
+      className="kit-card kit-card--featured card card--interactive"
+      style={{ textDecoration: 'none' }}
+    >
       <div className="kit-card__head">
         <span className="tag">{kit.category}</span>
         <span className={`pill ${STATUS_PILL[kit.status]} kit-card__status`}>
@@ -221,14 +229,14 @@ function FeaturedKitCard({ kit }: { kit: Kit }) {
       <p className="kit-card__tagline">{kit.tagline}</p>
       {kit.replaces && <p className="kit-card__replaces">{kit.replaces}</p>}
       <footer className="kit-card__foot">
-        <button className="btn btn--primary btn--sm kit-card__cta">
+        <span className="btn btn--primary btn--sm kit-card__cta">
           {resolveCtaLabel(kit.status)}
-        </button>
+        </span>
         <span className="kit-card__arrow">
           <ArrowRight size={14} />
         </span>
       </footer>
-    </article>
+    </a>
   )
 }
 
