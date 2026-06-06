@@ -30,7 +30,10 @@ export default function App() {
   const [route, setRoute] = useState<Route>(getRoute)
 
   useEffect(() => {
-    const handler = () => setRoute(getRoute())
+    const handler = () => {
+      setRoute(getRoute())
+      window.scrollTo(0, 0)
+    }
     window.addEventListener('hashchange', handler)
     return () => window.removeEventListener('hashchange', handler)
   }, [])

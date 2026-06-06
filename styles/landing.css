@@ -799,3 +799,111 @@ a.btn { text-decoration: none; }
 .kd-final-cta__actions { flex: none; }
 .kd-intake { display: flex; gap: 10px; }
 .kd-intake__field { max-width: 260px; }
+
+/* ============================================================================
+   RESPONSIVE — Kits listing + Kit detail
+   Breakpoints match the landing page: 940px (tablet) and 560px (mobile).
+   ========================================================================== */
+
+/* ── 940px — tablet ───────────────────────────────────────────────────────── */
+@media (max-width: 940px) {
+
+  /* shared kits nav */
+  .kits-nav__links { display: none; }
+  .kits-nav__in { padding: 0 20px; gap: 16px; }
+  .kits-nav__r { gap: 10px; }
+
+  /* kits listing: header + controls */
+  .kits-header { padding: 36px 0 24px; }
+  .kits-header__in,
+  .kits-body__in { padding: 0 20px; }
+  .kits-title { font-size: 32px; }
+  .kits-subtitle { font-size: 15px; }
+  .kits-search { max-width: 100%; }
+
+  /* kits listing: request-vertical row → stack */
+  .kits-request__in { flex-direction: column; align-items: flex-start; gap: 16px; }
+
+  /* kit detail: breadcrumb */
+  .kd-crumb__in { padding: 10px 20px; }
+
+  /* kit detail: section padding + inner padding */
+  .kd-section { padding: 48px 0; }
+  .kd-section__in { padding: 0 20px; }
+
+  /* kit detail: header — 2 col → 1 col, CTA card un-stickied */
+  .kd-header { padding: 40px 0 48px; }
+  .kd-header__in {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 0 20px;
+  }
+  .kd-header__name { font-size: 40px; }
+  .kd-header__cta-card { position: static; }
+
+  /* kit detail: legacy cost — 2 col → 1 col */
+  .kd-legacy__body { grid-template-columns: 1fr; gap: 32px; }
+
+  /* kit detail: AI-native — 2 col → 1 col */
+  .kd-ainative__grid { grid-template-columns: 1fr; gap: 40px; }
+
+  /* kit detail: proof — 2 col → 1 col */
+  .kd-proof__grid { grid-template-columns: 1fr; }
+
+  /* kit detail: pricing — 3 col → 2 col */
+  .kd-tiers { grid-template-columns: repeat(2, 1fr); }
+
+  /* kit detail: who it's for — 2 col → 1 col */
+  .kd-who__grid { grid-template-columns: 1fr; gap: 32px; }
+
+  /* kit detail: final CTA — row → stack */
+  .kd-final-cta__in { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .kd-final-cta__actions { width: 100%; }
+  .kd-intake { width: 100%; }
+  .kd-intake__field { flex: 1; max-width: none; }
+}
+
+/* ── 560px — mobile ───────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+
+  /* kits listing */
+  .kits-title { font-size: 28px; }
+  .kits-subtitle { font-size: 14px; margin-bottom: 20px; }
+  .kits-featured__eyebrow { font-size: 11px; }
+  .kits-request__headline { font-size: 20px; }
+  .kits-request .btn { width: 100%; }
+  .kits-body { padding: 28px 0 60px; }
+
+  /* kit detail: header */
+  .kd-header { padding: 28px 0 36px; }
+  .kd-header__name { font-size: 32px; }
+  .kd-header__tagline { font-size: 17px; }
+  .kd-header__summary { font-size: 15px; }
+
+  /* kit detail: anatomy grid — let it go to 1 col naturally,
+     but enforce it in case viewport is just wide enough for 2 */
+  .kd-anatomy__list { grid-template-columns: 1fr; }
+  .kd-anatomy__heading { font-size: 28px; }
+
+  /* kit detail: pain/fix table — hide the arrow column, stack rows */
+  .kd-painfix { grid-template-columns: 1fr; gap: 2px; }
+  .kd-painfix__arrow { display: none; }
+  .kd-painfix__fix { color: var(--accent); }
+
+  /* kit detail: pricing — 2 col → 1 col */
+  .kd-tiers { grid-template-columns: 1fr; }
+
+  /* kit detail: value narrative */
+  .kd-value__narrative { font-size: 19px; }
+
+  /* kit detail: who it's for */
+  .kd-who__text { font-size: 15px; }
+
+  /* kit detail: final CTA */
+  .kd-final-cta__heading { font-size: 28px; }
+  .kd-intake { flex-direction: column; }
+  .kd-intake .btn { width: 100%; }
+
+  /* kit detail: section padding */
+  .kd-section { padding: 36px 0; }
+}
