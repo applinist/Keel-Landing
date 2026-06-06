@@ -1,130 +1,269 @@
 import { useState } from 'react'
-import { Search, Package, ArrowLeft } from 'lucide-react'
+import { Search, Package, ArrowLeft, ArrowRight } from 'lucide-react'
 
-const CATEGORIES = ['All', 'Onboarding', 'Support', 'Sales', 'HR', 'Ops', 'Finance']
+/* ── Types (aligned to kit-listing-template.ts) ─────────────────────────── */
+
+type KitStatus = 'available' | 'in_development' | 'coming_soon'
 
 type Kit = {
   id: string
+  slug: string
   name: string
+  tagline: string
   category: string
-  description: string
-  flows: number
-  agents: number
-  status: 'ready' | 'beta' | 'soon'
+  status: KitStatus
+  replaces?: string        // "Replaces Gainsight, Totango"
+  cardBlurb?: string       // optional second line
+  waitlistCount?: number   // shown on in_development cards
+  featured: boolean
 }
+
+/* ── CTA resolution (mirrors kit-cta.ts) ───────────────────────────────── */
+
+function resolveCtaLabel(status: KitStatus): string {
+  switch (status) {
+    case 'available':      return 'Configure & launch'
+    case 'in_development': return 'Join the waitlist'
+    case 'coming_soon':    return 'Notify me'
+  }
+}
+
+/* ── Mock data ──────────────────────────────────────────────────────────── */
+
+const CATEGORIES = ['All', 'Onboarding', 'Support', 'Sales', 'HR', 'Ops', 'Finance']
 
 const KITS: Kit[] = [
   {
     id: 'customer-onboarding',
+    slug: 'customer-onboarding',
     name: 'Customer Onboarding',
+    tagline: 'Turn new signups into active, confident users — without a CS team.',
     category: 'Onboarding',
-    description: 'First-90-days journey from signed contract to confident, active user.',
-    flows: 14,
-    agents: 3,
-    status: 'ready',
-  },
-  {
-    id: 'employee-onboarding',
-    name: 'Employee Onboarding',
-    category: 'HR',
-    description: 'New hire experience: offer accept through end of week one, with manager touchpoints.',
-    flows: 11,
-    agents: 2,
-    status: 'ready',
+    status: 'available',
+    replaces: 'Replaces Gainsight, Totango',
+    featured: true,
   },
   {
     id: 'support-triage',
+    slug: 'support-triage',
     name: 'Support Triage',
+    tagline: 'Resolve tier-1 tickets before a human ever has to look.',
     category: 'Support',
-    description: 'Route, acknowledge, and resolve tier-1 tickets before a human ever has to look.',
-    flows: 9,
-    agents: 4,
-    status: 'ready',
+    status: 'available',
+    replaces: 'Replaces Zendesk, Intercom',
+    featured: true,
   },
   {
     id: 'inbound-sales',
+    slug: 'inbound-sales',
     name: 'Inbound Sales',
+    tagline: 'Qualify leads, book demos, and arm AEs with context before the call.',
     category: 'Sales',
-    description: 'Qualify leads, book demos, and arm AEs with context before the call.',
-    flows: 8,
-    agents: 2,
-    status: 'ready',
+    status: 'available',
+    replaces: 'Replaces HubSpot Sales Hub',
+    featured: false,
   },
   {
-    id: 'renewal-pipeline',
-    name: 'Renewal Pipeline',
-    category: 'Sales',
-    description: 'Surface at-risk accounts 90 days out and drive proactive renewal conversations.',
-    flows: 7,
-    agents: 2,
-    status: 'beta',
-  },
-  {
-    id: 'invoice-ops',
-    name: 'Invoice Ops',
-    category: 'Finance',
-    description: 'Match POs, flag exceptions, and close the month without chasing approvers.',
-    flows: 6,
-    agents: 1,
-    status: 'beta',
+    id: 'employee-onboarding',
+    slug: 'employee-onboarding',
+    name: 'Employee Onboarding',
+    tagline: 'Offer accept through end of week one, with manager touchpoints built in.',
+    category: 'HR',
+    status: 'available',
+    replaces: 'Replaces Workday Onboarding, BambooHR',
+    featured: false,
   },
   {
     id: 'incident-response',
+    slug: 'incident-response',
     name: 'Incident Response',
+    tagline: 'Detect, page, coordinate, and write the postmortem — start to finish.',
     category: 'Ops',
-    description: 'Detect, page, coordinate, and write the postmortem — start to finish.',
-    flows: 10,
-    agents: 3,
-    status: 'ready',
-  },
-  {
-    id: 'product-feedback',
-    name: 'Product Feedback Loop',
-    category: 'Ops',
-    description: 'Collect signals from every channel, cluster themes, and route to the right squad.',
-    flows: 5,
-    agents: 2,
-    status: 'beta',
+    status: 'available',
+    featured: false,
   },
   {
     id: 'offboarding',
+    slug: 'offboarding',
     name: 'Employee Offboarding',
+    tagline: 'Graceful exits: access revocation, knowledge transfer, exit interview.',
     category: 'HR',
-    description: 'Graceful exits: access revocation, knowledge transfer, and exit interview.',
-    flows: 8,
-    agents: 1,
-    status: 'ready',
+    status: 'available',
+    featured: false,
+  },
+  {
+    id: 'renewal-pipeline',
+    slug: 'renewal-pipeline',
+    name: 'Renewal Pipeline',
+    tagline: 'Surface at-risk accounts 90 days out and drive proactive renewals.',
+    category: 'Sales',
+    status: 'in_development',
+    replaces: 'Replaces Gainsight, ChurnZero',
+    waitlistCount: 84,
+    featured: false,
+  },
+  {
+    id: 'invoice-ops',
+    slug: 'invoice-ops',
+    name: 'Invoice Ops',
+    tagline: 'Match POs, flag exceptions, and close the month without chasing approvers.',
+    category: 'Finance',
+    status: 'in_development',
+    waitlistCount: 61,
+    featured: false,
+  },
+  {
+    id: 'product-feedback',
+    slug: 'product-feedback',
+    name: 'Product Feedback Loop',
+    tagline: 'Collect signals from every channel, cluster themes, route to the right squad.',
+    category: 'Ops',
+    status: 'in_development',
+    waitlistCount: 47,
+    featured: false,
+  },
+  {
+    id: 'partner-ops',
+    slug: 'partner-ops',
+    name: 'Partner Ops',
+    tagline: 'Onboard and activate channel partners without a dedicated team.',
+    category: 'Sales',
+    status: 'coming_soon',
+    featured: false,
+  },
+  {
+    id: 'compliance-monitor',
+    slug: 'compliance-monitor',
+    name: 'Compliance Monitor',
+    tagline: 'Continuous policy checks and audit trails — without a compliance officer.',
+    category: 'Ops',
+    status: 'coming_soon',
+    featured: false,
   },
 ]
 
+/* ── Status helpers ─────────────────────────────────────────────────────── */
+
+const STATUS_ORDER: Record<KitStatus, number> = {
+  available: 0,
+  in_development: 1,
+  coming_soon: 2,
+}
+
+const STATUS_PILL: Record<KitStatus, string> = {
+  available:      'pill--success',
+  in_development: 'pill--warn',
+  coming_soon:    'pill--neutral',
+}
+
+const STATUS_LABEL: Record<KitStatus, string> = {
+  available:      'Available',
+  in_development: 'In development',
+  coming_soon:    'Coming soon',
+}
+
+const SECTION_LABEL: Record<KitStatus, string> = {
+  available:      'Available now',
+  in_development: 'In development',
+  coming_soon:    'Coming soon',
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+
 function KitCard({ kit, muted = false }: { kit: Kit; muted?: boolean }) {
+  const ctaLabel = resolveCtaLabel(kit.status)
+  const isPrimary = kit.status === 'available'
+
   return (
     <article className={`kit-card card card--interactive${muted ? ' kit-card--muted' : ''}`}>
       <div className="kit-card__head">
         <span className="tag">{kit.category}</span>
-        {kit.status === 'ready' && (
-          <span className="pill pill--success kit-card__status">Available</span>
-        )}
-        {kit.status === 'beta' && (
-          <span className="pill pill--warn kit-card__status">Beta</span>
-        )}
+        <span className={`pill ${STATUS_PILL[kit.status]} kit-card__status`}>
+          {STATUS_LABEL[kit.status]}
+        </span>
       </div>
+
       <h2 className="kit-card__name">{kit.name}</h2>
-      <p className="kit-card__desc">{kit.description}</p>
+      <p className="kit-card__tagline">{kit.tagline}</p>
+
+      {kit.replaces && (
+        <p className="kit-card__replaces">{kit.replaces}</p>
+      )}
+
       <footer className="kit-card__foot">
-        <span className="kit-card__meta">
-          <span className="data">{kit.flows}</span> flows
-        </span>
-        <span className="kit-card__meta">
-          <span className="data">{kit.agents}</span> agents
-        </span>
-        <button className="btn btn--ghost btn--sm kit-card__cta">
-          {kit.status === 'ready' ? 'Preview' : 'Learn more'}
+        {kit.status === 'in_development' && kit.waitlistCount != null && (
+          <span className="kit-card__waitlist">
+            <span className="data">{kit.waitlistCount}</span> waiting
+          </span>
+        )}
+        <button
+          className={`btn btn--sm kit-card__cta ${isPrimary ? 'btn--primary' : 'btn--ghost'}`}
+        >
+          {ctaLabel}
         </button>
       </footer>
     </article>
   )
 }
+
+/* ── Featured card (wider, more emphasis) ───────────────────────────────── */
+
+function FeaturedKitCard({ kit }: { kit: Kit }) {
+  return (
+    <article className="kit-card kit-card--featured card card--interactive">
+      <div className="kit-card__head">
+        <span className="tag">{kit.category}</span>
+        <span className={`pill ${STATUS_PILL[kit.status]} kit-card__status`}>
+          {STATUS_LABEL[kit.status]}
+        </span>
+      </div>
+      <h2 className="kit-card__name kit-card__name--lg">{kit.name}</h2>
+      <p className="kit-card__tagline">{kit.tagline}</p>
+      {kit.replaces && <p className="kit-card__replaces">{kit.replaces}</p>}
+      <footer className="kit-card__foot">
+        <button className="btn btn--primary btn--sm kit-card__cta">
+          {resolveCtaLabel(kit.status)}
+        </button>
+        <span className="kit-card__arrow">
+          <ArrowRight size={14} />
+        </span>
+      </footer>
+    </article>
+  )
+}
+
+/* ── Section ────────────────────────────────────────────────────────────── */
+
+function KitsSection({
+  status,
+  kits,
+  muted = false,
+}: {
+  status: KitStatus
+  kits: Kit[]
+  muted?: boolean
+}) {
+  if (kits.length === 0) return null
+  return (
+    <section className={`kits-section${muted ? ' kits-section--muted' : ''}`}>
+      <div className="kits-section__label">
+        <span className={`pill ${STATUS_PILL[status]}`}>{SECTION_LABEL[status]}</span>
+        <span className="kits-section__count">
+          {kits.length} kit{kits.length !== 1 ? 's' : ''}
+        </span>
+      </div>
+      <ul className="kits-grid">
+        {kits.map((kit) => (
+          <li key={kit.id}>
+            <KitCard kit={kit} muted={muted} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+/* ── Page ───────────────────────────────────────────────────────────────── */
 
 export default function KitsPage() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -135,16 +274,30 @@ export default function KitsPage() {
     const matchQ =
       !query ||
       k.name.toLowerCase().includes(query.toLowerCase()) ||
-      k.description.toLowerCase().includes(query.toLowerCase())
+      k.tagline.toLowerCase().includes(query.toLowerCase())
     return matchCat && matchQ
   }
 
-  const readyKits = KITS.filter((k) => k.status === 'ready' && matchesFilter(k))
-  const betaKits  = KITS.filter((k) => k.status !== 'ready' && matchesFilter(k))
-  const totalVisible = readyKits.length + betaKits.length
+  // Featured: always shown regardless of filter
+  const featuredKits = KITS.filter((k) => k.featured)
+
+  // Filtered grid — sorted by status order, then waitlist count desc, then name
+  const filteredKits = KITS.filter(matchesFilter).sort((a, b) => {
+    const byStatus = STATUS_ORDER[a.status] - STATUS_ORDER[b.status]
+    if (byStatus !== 0) return byStatus
+    if (a.status === 'in_development')
+      return (b.waitlistCount ?? 0) - (a.waitlistCount ?? 0)
+    return a.name.localeCompare(b.name)
+  })
+
+  const availableKits    = filteredKits.filter((k) => k.status === 'available')
+  const inDevKits        = filteredKits.filter((k) => k.status === 'in_development')
+  const comingSoonKits   = filteredKits.filter((k) => k.status === 'coming_soon')
+  const totalVisible     = filteredKits.length
 
   return (
     <div className="keel kits-page" data-mode="dark">
+      {/* Nav */}
       <header className="kits-nav">
         <div className="kits-nav__in">
           <a className="brand" href="#top" onClick={() => (window.location.hash = '')}>
@@ -161,13 +314,10 @@ export default function KitsPage() {
       </header>
 
       <main className="kits-main">
+        {/* Page header */}
         <div className="kits-header">
           <div className="kits-header__in">
-            <a
-              className="kits-back"
-              href="#top"
-              onClick={() => (window.location.hash = '')}
-            >
+            <a className="kits-back" href="#top" onClick={() => (window.location.hash = '')}>
               <ArrowLeft size={14} />
               Overview
             </a>
@@ -205,6 +355,24 @@ export default function KitsPage() {
 
         <div className="kits-body">
           <div className="kits-body__in">
+
+            {/* Featured strip — always visible */}
+            {featuredKits.length > 0 && (
+              <section className="kits-featured">
+                <div className="kits-section__label">
+                  <span className="kits-featured__eyebrow eyebrow">Featured</span>
+                </div>
+                <ul className="kits-grid kits-grid--featured">
+                  {featuredKits.map((kit) => (
+                    <li key={kit.id}>
+                      <FeaturedKitCard kit={kit} />
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {/* Filtered sections */}
             {totalVisible === 0 ? (
               <div className="kits-empty">
                 <Package size={32} strokeWidth={1.25} />
@@ -212,39 +380,25 @@ export default function KitsPage() {
               </div>
             ) : (
               <>
-                {readyKits.length > 0 && (
-                  <section className="kits-section">
-                    <div className="kits-section__label">
-                      <span className="pill pill--success">Available now</span>
-                      <span className="kits-section__count">{readyKits.length} kit{readyKits.length !== 1 ? 's' : ''}</span>
-                    </div>
-                    <ul className="kits-grid">
-                      {readyKits.map((kit) => (
-                        <li key={kit.id}>
-                          <KitCard kit={kit} />
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                )}
-
-                {betaKits.length > 0 && (
-                  <section className="kits-section kits-section--beta">
-                    <div className="kits-section__label">
-                      <span className="pill pill--warn">In beta</span>
-                      <span className="kits-section__count">{betaKits.length} kit{betaKits.length !== 1 ? 's' : ''}</span>
-                    </div>
-                    <ul className="kits-grid">
-                      {betaKits.map((kit) => (
-                        <li key={kit.id}>
-                          <KitCard kit={kit} muted />
-                        </li>
-                      ))}
-                    </ul>
-                  </section>
-                )}
+                <KitsSection status="available"      kits={availableKits} />
+                <KitsSection status="in_development" kits={inDevKits} muted />
+                <KitsSection status="coming_soon"    kits={comingSoonKits} muted />
               </>
             )}
+
+            {/* Request vertical — always shown */}
+            <div className="kits-request">
+              <div className="kits-request__in">
+                <div>
+                  <p className="kits-request__headline">Don't see your market?</p>
+                  <p className="kits-request__body">
+                    Request the Kit you have in mind. Demand decides what we build next.
+                  </p>
+                </div>
+                <button className="btn btn--ghost">Request a Kit</button>
+              </div>
+            </div>
+
           </div>
         </div>
       </main>
