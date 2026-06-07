@@ -907,3 +907,93 @@ a.btn { text-decoration: none; }
   /* kit detail: section padding */
   .kd-section { padding: 36px 0; }
 }
+
+/* ============================================================================
+   MODE TOGGLE + LIGHT-MODE OVERRIDES — home page
+   ========================================================================== */
+
+/* Nav — uses raw --ink-900 token; swap to semantic --surface in light mode */
+[data-mode="light"] .nav {
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+}
+
+/* Hero tease widget + Sandbox — both use hardcoded ink gradients */
+[data-mode="light"] .tease,
+[data-mode="light"] .sandbox {
+  background: linear-gradient(var(--surface-raised), var(--surface-sunken));
+  border-color: var(--border-strong);
+}
+
+/* Sandbox left rail — hardcoded ink-900 tint */
+[data-mode="light"] .sandbox__rail {
+  background: color-mix(in srgb, var(--surface-sunken) 60%, transparent);
+}
+
+/* Personas "Primary · The Insider" card — hardcoded ink gradient */
+[data-mode="light"] .edge--primary {
+  background: color-mix(in srgb, var(--accent) 6%, var(--surface-raised));
+}
+
+/* Hero tease + Sandbox: opacity-based dimming was tuned for dark surfaces.
+   On light backgrounds, 0.28–0.32 makes dark text collapse toward white.
+   Raise to 0.52 so there's still a visible hierarchy without losing readability. */
+[data-mode="light"] .tease__feed li.is-dim { opacity: 0.52; }
+[data-mode="light"] .sandbox[data-mode-anim="step"] .sb-step { opacity: 0.52; }
+
+/* ============================================================================
+   MODE TOGGLE + LIGHT-MODE OVERRIDES for kits pages
+   ========================================================================== */
+
+/* Toggle button */
+.kits-nav__mode {
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+}
+.kits-nav__mode:hover { color: var(--text-strong); }
+
+/* Light mode — kits listing */
+[data-mode="light"] .kits-header {
+  border-bottom-color: var(--border);
+}
+[data-mode="light"] .kits-search__input {
+  background: var(--surface-overlay);
+  color: var(--text-strong);
+}
+[data-mode="light"] .kits-request {
+  border-top-color: var(--border);
+}
+
+/* Light mode — kit detail header gradient */
+[data-mode="light"] .kd-header {
+  background: linear-gradient(180deg, var(--surface-overlay) 0%, var(--surface) 100%);
+}
+
+/* Light mode — sticky CTA card gets a shadow to separate from content */
+[data-mode="light"] .kd-header__cta-card {
+  box-shadow: var(--shadow-2);
+}
+
+/* Light mode — anatomy grid items: right border was invisible on dark hairlines */
+[data-mode="light"] .kd-anatomy__item {
+  border-right-color: var(--border);
+}
+
+/* Light mode — highlighted tier card */
+[data-mode="light"] .kd-tier--highlight {
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface-overlay));
+}
+
+/* Light mode — final CTA section */
+[data-mode="light"] .kd-final-cta {
+  background: var(--surface-sunken);
+}
+
+/* Light mode — proof cards */
+[data-mode="light"] .kd-proof__sandbox,
+[data-mode="light"] .kd-proof__audit {
+  box-shadow: var(--shadow-1);
+}
+
+/* Light mode — muted cards slightly less faded (light bg needs less contrast reduction) */
+[data-mode="light"] .kit-card--muted { opacity: 0.6; }
+[data-mode="light"] .kit-card--muted:hover { opacity: 1; }

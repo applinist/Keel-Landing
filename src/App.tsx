@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import type { Mode } from './types'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
 import Anatomy from './components/Anatomy'
@@ -28,6 +29,17 @@ function getRoute(): Route {
 
 export default function App() {
   const [route, setRoute] = useState<Route>(getRoute)
+  const [mode, setMode] = useState<Mode>(
+    () => (localStorage.getItem('keel-mode') as Mode) ?? 'dark'
+  )
+
+  const toggleMode = () => {
+    setMode(prev => {
+      const next: Mode = prev === 'dark' ? 'light' : 'dark'
+      localStorage.setItem('keel-mode', next)
+      return next
+    })
+  }
 
   useEffect(() => {
     const handler = () => {
@@ -38,12 +50,12 @@ export default function App() {
     return () => window.removeEventListener('hashchange', handler)
   }, [])
 
-  if (route.page === 'kits') return <KitsPage />
-  if (route.page === 'kit-detail') return <KitDetailPage slug={route.slug} />
+  if (route.page === 'kits') return <KitsPage mode={mode} onToggleMode={toggleMode} />
+  if (route.page === 'kit-detail') return <KitDetailPage slug={route.slug} mode={mode} onToggleMode={toggleMode} />
 
   return (
-    <div className="keel">
-      <Nav />
+    <div className="keel" data-mode={mode}>
+      <Nav mode={mode} onToggleMode={toggleMode} />
       <Hero />
       <Anatomy />
       <AiNative />

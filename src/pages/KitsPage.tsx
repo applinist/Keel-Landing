@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { Search, Package, ArrowLeft, ArrowRight } from 'lucide-react'
+import { Search, Package, ArrowRight, ArrowLeft } from 'lucide-react'
+import KitsNav from '../components/KitsNav'
+import type { Mode } from '../types'
 
 /* ── Types (aligned to kit-listing-template.ts) ─────────────────────────── */
 
@@ -273,7 +275,7 @@ function KitsSection({
 
 /* ── Page ───────────────────────────────────────────────────────────────── */
 
-export default function KitsPage() {
+export default function KitsPage({ mode, onToggleMode }: { mode: Mode; onToggleMode: () => void }) {
   const [activeCategory, setActiveCategory] = useState('All')
   const [query, setQuery] = useState('')
 
@@ -304,22 +306,13 @@ export default function KitsPage() {
   const totalVisible     = filteredKits.length
 
   return (
-    <div className="keel kits-page" data-mode="dark">
-      {/* Nav */}
-      <header className="kits-nav">
-        <div className="kits-nav__in">
-          <a className="brand" href="#top" onClick={() => (window.location.hash = '')}>
-            <img src="/assets/keel-mark.svg" alt="" />Keel
-          </a>
-          <nav className="kits-nav__links">
-            <a href="#top" onClick={() => (window.location.hash = '')}>Back to overview</a>
-          </nav>
-          <div className="kits-nav__r">
-            <a href="#" className="nav__signin">Sign in</a>
-            <button className="btn btn--primary btn--sm">Request access</button>
-          </div>
-        </div>
-      </header>
+    <div className="keel kits-page" data-mode={mode}>
+      <KitsNav
+        mode={mode}
+        onToggleMode={onToggleMode}
+        back={{ href: '#top', label: 'Back to overview', onClick: () => (window.location.hash = '') }}
+        cta={{ label: 'Request access' }}
+      />
 
       <main className="kits-main">
         {/* Page header */}

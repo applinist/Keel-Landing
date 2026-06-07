@@ -1,5 +1,7 @@
 import { useState } from 'react'
-import { ArrowLeft, Plus, Check } from 'lucide-react'
+import { Plus, Check } from 'lucide-react'
+import KitsNav from '../components/KitsNav'
+import type { Mode } from '../types'
 
 /* ── Types (mirrors published-kit.ts concepts) ────────────────────────────── */
 
@@ -489,35 +491,20 @@ function FinalCtaSection({ kit }: { kit: KitDetailData }) {
 
 /* ── Page ─────────────────────────────────────────────────────────────────── */
 
-export default function KitDetailPage({ slug }: { slug: string }) {
+export default function KitDetailPage({ slug, mode, onToggleMode }: { slug: string; mode: Mode; onToggleMode: () => void }) {
   const kit = MOCK_DETAILS[slug] ?? getFallbackDetail(slug)
   const allFaqs = [...STANDARD_FAQS, ...(kit.faqs ?? [])]
 
   const goToListing = () => { window.location.hash = 'kits' }
 
   return (
-    <div className="keel kd-page">
-      {/* Nav */}
-      <header className="kits-nav">
-        <div className="kits-nav__in">
-          <a className="brand" href="#top" onClick={() => (window.location.hash = '')}>
-            <img src="/assets/keel-mark.svg" alt="" />Keel
-          </a>
-          <nav className="kits-nav__links">
-            <a
-              href="#kits"
-              onClick={(e) => { e.preventDefault(); goToListing() }}
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}
-            >
-              <ArrowLeft size={13} /> All Kits
-            </a>
-          </nav>
-          <div className="kits-nav__r">
-            <a href="#" className="nav__signin">Sign in</a>
-            <button className="btn btn--primary btn--sm">{resolveCtaLabel(kit.status)}</button>
-          </div>
-        </div>
-      </header>
+    <div className="keel kd-page" data-mode={mode}>
+      <KitsNav
+        mode={mode}
+        onToggleMode={onToggleMode}
+        back={{ href: '#kits', label: 'All Kits', onClick: goToListing }}
+        cta={{ label: resolveCtaLabel(kit.status) }}
+      />
 
       {/* Breadcrumb */}
       <div className="kd-crumb">
